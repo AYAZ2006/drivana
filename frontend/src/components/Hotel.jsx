@@ -19,7 +19,7 @@ function Hotel() {
     formData.append('image',image)
     formData.append('price',price)
     try {
-      const res=await fetch('https://your-backend.com/api/upload', {method: 'POST',body: formData,})
+      const res=await fetch('https://drivana-backend.vercel.app/api/upload', {method: 'POST',body: formData,})
       } catch (err) {
         alert('Something went wrong!')
       }
