@@ -45,7 +45,7 @@ function Login() {
     e.preventDefault()
     try
     {
-        await axios.post('http://127.0.0.1:8000/api/register/', { username,password,role })
+        await axios.post('https://drivana-backend.vercel.app/api/register/', { username,password,role })
         navigate('/landing')
     }
     catch(error)
@@ -56,14 +56,14 @@ function Login() {
 const handleLogin=async(e)=>{
   e.preventDefault();
   try{
-      await axios.post('http://127.0.0.1:8000/api/login/',{username,password,role})
+      await axios.post('https://drivana-backend.vercel.app/api/login/',{username,password,role})
       localStorage.setItem('username',username)
       if(role==='User'){
         navigate('/landing')
       }
       if(role==='Driver Partner'){
         try{
-          const check=await axios.get(`http://127.0.0.1:8000/api/${username}/details/`)
+          const check=await axios.get(`https://drivana-backend.vercel.app/api/${username}/details/`)
           if(check.data.length>0){
             navigate('ready')
           }
@@ -77,7 +77,7 @@ const handleLogin=async(e)=>{
       }
       if(role==='Logistics Partner'){
         try{
-          const check=await axios.get(`http://127.0.0.1:8000/api/${username}/details/`)
+          const check=await axios.get(`https://drivana-backend.vercel.app/api/${username}/details/`)
           if(check.data.length>0){
             navigate('ready')
           }
@@ -112,7 +112,7 @@ const handleLoginError=()=>{
   alert('Google Login Failed')
 }
 const sendOtp=async()=>{
-  const response=await fetch('http://127.0.0.1:8000/api/send-otp/',{method:'POST',headers:{'Content-Type':'application/json',},body:JSON.stringify({email})})
+  const response=await fetch('https://drivana-backend.vercel.app/api/send-otp/',{method:'POST',headers:{'Content-Type':'application/json',},body:JSON.stringify({email})})
   const data=await response.json()
   if(data.message){
     toast.success(`otp has been successfully sent to ${email}`)
@@ -122,7 +122,7 @@ const sendOtp=async()=>{
   }
 }
 const verifyOtp=async()=>{
-  const response=await fetch('http://127.0.0.1:8000/api/verify-otp/',{method:'POST',headers:{'Content-Type':'application/json',},body:JSON.stringify({email,otp})})
+  const response=await fetch('https://drivana-backend.vercel.app/api/verify-otp/',{method:'POST',headers:{'Content-Type':'application/json',},body:JSON.stringify({email,otp})})
   const data=await response.json()
   if(data.message){
     alert('otp has been successfully verified')
