@@ -39,7 +39,7 @@
     useEffect(()=>{
       const fetchReq=async()=>{
         try{
-          const response=await axios.get('http://127.0.0.1:8000/api/drive/')
+          const response=await axios.get('https://drivana-backend.vercel.app/api/drive/')
           setReq(response.data)
         }
         catch{
@@ -127,7 +127,7 @@
                   <p><strong>Distance:</strong> {req.details.distance} km</p>
                   <p><strong>Price:</strong> ₹{req.details.price}</p>
                   <p><strong>Ride Type:</strong> {req.details.ride_type}</p>
-                  <button className='rounded-full border-1 mt-5 bg-black text-white w-20 h-10' onClick={async (e) => { e.stopPropagation(); try { const pos = await new Promise((res, rej) => navigator.geolocation.getCurrentPosition(res, rej, { enableHighAccuracy: true })); const lat = pos.coords.latitude, lng = pos.coords.longitude; await fetchRoute(`${userCoords[0]},${userCoords[1]}`, req.details.pickup, false, 'green'); setAcceptedRide(req); const driverUsername = localStorage.getItem("username"); const detailsRes = await fetch(`http://127.0.0.1:8000/api/${driverUsername}/details/`); const userDetails = await detailsRes.json(); const phone = userDetails?.[0]?.details?.[0]; const res = await fetch("http://127.0.0.1:8000/api/drive/", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: req.id, accepted_by: driverUsername, driver_latitude: lat, driver_longitude: lng, phone }) }); if (!res.ok) throw new Error("Failed to record accepted ride"); setReq([]); } catch (err) { console.error("Error:", err); alert("Location access is required to accept the ride."); } }}>Accept</button>
+                  <button className='rounded-full border-1 mt-5 bg-black text-white w-20 h-10' onClick={async (e) => { e.stopPropagation(); try { const pos = await new Promise((res, rej) => navigator.geolocation.getCurrentPosition(res, rej, { enableHighAccuracy: true })); const lat = pos.coords.latitude, lng = pos.coords.longitude; await fetchRoute(`${userCoords[0]},${userCoords[1]}`, req.details.pickup, false, 'green'); setAcceptedRide(req); const driverUsername = localStorage.getItem("username"); const detailsRes = await fetch(`https://drivana-backend.vercel.app/api/${driverUsername}/details/`); const userDetails = await detailsRes.json(); const phone = userDetails?.[0]?.details?.[0]; const res = await fetch("https://drivana-backend.vercel.app/api/drive/", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: req.id, accepted_by: driverUsername, driver_latitude: lat, driver_longitude: lng, phone }) }); if (!res.ok) throw new Error("Failed to record accepted ride"); setReq([]); } catch (err) { console.error("Error:", err); alert("Location access is required to accept the ride."); } }}>Accept</button>
                   <button className='rounded-full h-10 ml-30 w-10 border-1 font-bold'>X</button>
                 </div>
               ))}
@@ -138,7 +138,7 @@
               )}
               {on && acceptedRide && reachedPickup && !reachedDestiny && (
                 <div>
-                  <button className='rounded-full border-1 bg-black text-white h-10 w-40 mt-5 ml-25' onClick={async()=>{if(!acceptedRide?.id)return;try{await fetch('http://127.0.0.1:8000/api/drive/',{method:'DELETE',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:acceptedRide.id})});const orderPayload={pickup:acceptedRide.details.pickup,dropoff:acceptedRide.details.dropoff,ride_type:acceptedRide.details.ride_type,quantity:parseInt(acceptedRide.details.ride_type?.match(/\d+/)?.[0])||1,total_price:parseFloat(acceptedRide.details.price)};await fetch(`http://127.0.0.1:8000/api/${acceptedRide.username}/rides/`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(orderPayload)});}catch(e){console.error(e)}setReachedDestiny(true);setReq([]);}}>Reached Destiny</button>
+                  <button className='rounded-full border-1 bg-black text-white h-10 w-40 mt-5 ml-25' onClick={async()=>{if(!acceptedRide?.id)return;try{await fetch('https://drivana-backend.vercel.app/api/drive/',{method:'DELETE',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:acceptedRide.id})});const orderPayload={pickup:acceptedRide.details.pickup,dropoff:acceptedRide.details.dropoff,ride_type:acceptedRide.details.ride_type,quantity:parseInt(acceptedRide.details.ride_type?.match(/\d+/)?.[0])||1,total_price:parseFloat(acceptedRide.details.price)};await fetch(`https://drivana-backend.vercel.app/api/${acceptedRide.username}/rides/`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(orderPayload)});}catch(e){console.error(e)}setReachedDestiny(true);setReq([]);}}>Reached Destiny</button>
                 </div>
               )}
               {on && acceptedRide && reachedPickup && reachedDestiny && (
