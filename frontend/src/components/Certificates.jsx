@@ -38,7 +38,7 @@ function Certificates(){
     return
     }
     try{
-        await axios.post(`http://127.0.0.1:8000/api/${username}/details/`,{details:inputs})
+        await axios.post(`https://drivana-backend.vercel.app/api/${username}/details/`,{details:inputs})
         setInputs(Array(documents.length).fill(""))
         navigate('/ready')
     }
