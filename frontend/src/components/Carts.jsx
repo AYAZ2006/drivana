@@ -33,7 +33,7 @@ function Carts() {
     total_price: dis !== null ? parseFloat(dis.toFixed(2)) : total
   }
   try {
-    await axios.post(`http://127.0.0.1:8000/api/${username}/orders/`, orderPayload)
+    await axios.post(`https://drivana-backend.vercel.app/api/${username}/orders/`, orderPayload)
     localStorage.removeItem('cart')
     setItems([])
     setTotal(0)
