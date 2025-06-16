@@ -34,7 +34,7 @@
     if (!rideId) return
     const poll=setInterval(async()=>{
       try{  
-        const res=await fetch('http://127.0.0.1:8000/api/drive/')
+        const res=await fetch('https://drivana-backend.vercel.app/api/drive/')
         const data=await res.json()
         const ride=data.find(r => r.id === parseInt(rideId))
         if(ride?.accepted_by){
@@ -51,7 +51,7 @@
   const handleNum=async()=>{
     if(!driverName) return
     try{
-      const response=await axios.get(`http://127.0.0.1:8000/api/${driverName}/details/`)
+      const response=await axios.get(`https://drivana-backend.vercel.app/api/${driverName}/details/`)
       const phone=response.data?.[0]?.details?.[0]
       setDriverPhone(phone)
     }catch{
