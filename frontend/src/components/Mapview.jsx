@@ -115,7 +115,7 @@ function MapOnly() {
 
     const getRideDetails = async () => {
       try {
-        const res = await fetch('http://127.0.0.1:8000/api/drive/')
+        const res = await fetch('https://drivana-backend.vercel.app/api/drive/')
         const data = await res.json()
         const ride = data.find(item => item.id.toString() === rideId.toString())
 
