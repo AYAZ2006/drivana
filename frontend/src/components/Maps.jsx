@@ -55,7 +55,7 @@ function MapWithRoute() {
       username,
       details: {pickup,dropoff,price,distance,ride_type: rideType}
     }
-    const response=await axios.post(`http://127.0.0.1:8000/api/drive/`,payload)
+    const response=await axios.post(`https://drivana-backend.vercel.app/api/drive/`,payload)
     const rideId = response.data.id;
     if(rideId){
       localStorage.setItem('currentRideId', rideId)
