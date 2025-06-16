@@ -2,7 +2,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure--tvv+#q41@qy!_^*92%p@_1%#r(o($**b@s++ele4&*p(hv-%y'
 DEBUG = True
-ALLOWED_HOSTS = ['127.0.0.1','d660-175-101-36-3.ngrok-free.app']
+ALLOWED_HOSTS = ['127.0.0.1','d660-175-101-36-3.ngrok-free.app','https://drivana-backend.vercel.app/']
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -32,6 +32,7 @@ CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
     'http://127.0.0.1:8000',
+    'https://drivana.vercel.app/',
 ]
 TEMPLATES = [
     {
