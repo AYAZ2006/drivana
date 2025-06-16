@@ -1,33 +1,36 @@
-import React from 'react';
+import { initializeApp } from "firebase/app";
+import { getMessaging,getToken } from "firebase/messaging";
+import { useEffect } from "react";
+import { onMessage } from "firebase/messaging";
+const firebaseConfig = {
+  apiKey: "AIzaSyBywvZXmRgElCJ-XcQ3j1VcU0Q0x7jYgpI",
+  authDomain: "drivana-5c7e3.firebaseapp.com",
+  projectId: "drivana-5c7e3",
+  storageBucket: "drivana-5c7e3.firebasestorage.app",
+  messagingSenderId: "436800809575",
+  appId: "1:436800809575:web:d61f8cd18f2a8e0eb4c2c2",
+  measurementId: "G-QPEC4BTTWH",
+};
 
-function Notify() {
-  const showNotification = () => {
-    if (Notification.permission === 'granted') {
-      new Notification('Simple Notification', {
-        body: 'Native Web Notification is working!',
-        icon: 'https://cdn-icons-png.flaticon.com/512/1006/1006771.png',
-      });
-    } else if (Notification.permission !== 'denied') {
-      Notification.requestPermission().then(permission => {
-        if (permission === 'granted') {
-          new Notification('Simple Notification', {
-            body: 'Thanks for granting permission!',
-            icon: 'https://cdn-icons-png.flaticon.com/512/1006/1006771.png',
-          });
-        } else {
-          alert('Notification permission was denied.');
-        }
-      });
-    } else {
-      alert('Notification permission was denied.');
-    }
-  };
+const app = initializeApp(firebaseConfig);
+const messaging = getMessaging(app);
 
-  return (
-    <div style={{ margin: '100px' }}>
-      <button onClick={showNotification}>Show Native Notification</button>
-    </div>
-  );
+export const generate = async () => {
+  const perm = await Notification.requestPermission();
+  console.log("Notification permission:", perm);
+  if(perm==="granted"){
+    const token=await getToken(messaging,{vapidKey:"BDeCOJ6iKswNyUQkyDBfh5Pyp-1ryn7FLLfikYVTrcuBaCCNi-Br2-BOMmKSejt9zJJN2lyiUGeEtnB8ZkiNEu0"})
+    console.log(token)
+  }
+};
+
+export default function Notify() {
+  useEffect(() => {
+    generate()
+    onMessage(messaging,(payload)=>{
+      console.log(payload)
+    })
+  }, [])
+
+  return <div>Notifications initialized</div>;
 }
-
-export default Notify;
