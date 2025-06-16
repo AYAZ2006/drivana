@@ -6,8 +6,8 @@ function Activity() {
   useEffect(()=>{
     const fetch=async()=>{
       try{
-        const response1=await axios.get(`http://127.0.0.1:8000/api/${username}/orders/`)
-        const response2=await axios.get(`http://127.0.0.1:8000/api/${username}/rides/`)
+        const response1=await axios.get(`https://drivana-backend.vercel.app/api/${username}/orders/`)
+        const response2=await axios.get(`https://drivana-backend.vercel.app/api/${username}/rides/`)
         const merged=[...response1.data,...response2.data]
         setOrders(merged)
       }catch{
