@@ -72,7 +72,7 @@ useEffect(() => {
   return (
     <div className='bg-white h-166'>
       <div className='bg-[#0f121b] h-50 rounded-bl-4xl rounded-br-4xl'>
-        <div className='bg-white h-15 w-75 rounded-full fixed mt-8 ml-9 flex cursor-pointer' onClick={()=>navigate('/search')}>
+        <div className='bg-white h-15 w-75 rounded-full fixed mt-8 ml-9 flex cursor-pointer' onClick={()=>navigate('/menu')}>
             <img src='https://cdn-icons-png.flaticon.com/128/149/149852.png' className='h-10 mt-2.5 ml-2'></img>
             <p className='text-blue-900 mt-3.5 ml-4 text-[20px]'>Search for</p>
             <AnimatePresence mode="wait">
