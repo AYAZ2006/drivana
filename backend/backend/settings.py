@@ -2,7 +2,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure--tvv+#q41@qy!_^*92%p@_1%#r(o($**b@s++ele4&*p(hv-%y'
 DEBUG = True
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['drivana-backend.vercel.app']
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
