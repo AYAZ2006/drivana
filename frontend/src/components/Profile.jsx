@@ -27,7 +27,7 @@ function Profile() {
       return acc;
     }, {})
 
-    await axios.post(`http://127.0.0.1:8000/api/${username}/personal/`, { details: payload });
+    await axios.post(`https://drivana-backend.vercel.app/api/${username}/personal/`, { details: payload });
     alert('Data saved successfully!')
   } catch {
     alert('server error!!')
@@ -37,7 +37,7 @@ function Profile() {
 
 const handleFetch = async () => {
   try {
-    const response=await axios.get(`http://127.0.0.1:8000/api/${username}/personal/`)
+    const response=await axios.get(`https://drivana-backend.vercel.app/api/${username}/personal/`)
     const raw=Array.isArray(response.data) ? response.data[0] : response.data
     const details=raw.details
     if (!details || typeof details !== 'object' || Array.isArray(details)) {
