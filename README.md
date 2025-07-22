@@ -27,7 +27,7 @@ A fully responsive, real-time logistics platform built with Django and React. DR
    git clone https://github.com/yourusername/drivana.git
    cd drivana
    ```
-   2.**Backend Setup (Django)**
+2.**Backend Setup (Django)**
    ```bash
     cd backend
     python -m venv venv
@@ -36,7 +36,7 @@ A fully responsive, real-time logistics platform built with Django and React. DR
     python manage.py migrate
     python manage.py runserver
    ```
-   3.**Frontend Setup (React)**
+ 3.**Frontend Setup (React)**
    ```bash
    cd ../frontend
    npm install
