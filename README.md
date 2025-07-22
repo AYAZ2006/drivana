@@ -44,3 +44,14 @@ A fully responsive, real-time logistics platform built with Django and React. DR
     npm install
     npm start
     ```
+## 🚀 Future Improvements
+
+- Implement role-based dashboards for admin, users, drivers, and restaurant partners  
+- Add real-time delivery tracking with ETA prediction  
+- Introduce rating and review system for drivers and restaurants  
+- Integrate digital payment gateway (e.g., Razorpay, Stripe)  
+- Optimize map performance with clustering and caching  
+- Add push notifications and SMS alerts  
+- Support for multi-language interface  
+- Enable vehicle availability scheduling by drivers  
+- Admin analytics dashboard for orders, trips, and delivery tracking
