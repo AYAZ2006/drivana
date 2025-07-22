@@ -23,22 +23,24 @@ A fully responsive, real-time logistics platform built with Django and React. DR
 ## ⚙️ Getting Started
 
 1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yourusername/drivana.git
-   cd drivana
-   ```
-2.**Backend Setup (Django)**
-   ```bash
+    ```bash
+    git clone https://github.com/YOUR_USERNAME/drivana.git
+    cd drivana
+    ```
+
+2. **Backend Setup (Django)**
+    ```bash
     cd backend
     python -m venv venv
     source venv/bin/activate  # On Windows use `venv\Scripts\activate`
     pip install -r requirements.txt
     python manage.py migrate
     python manage.py runserver
-   ```
- 3.**Frontend Setup (React)**
-   ```bash
-   cd ../frontend
-   npm install
-   npm start
-   ```
+    ```
+
+3. **Frontend Setup (React)**
+    ```bash
+    cd frontend
+    npm install
+    npm start
+    ```
